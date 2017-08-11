@@ -266,11 +266,11 @@ def main(unused_argv):
         inference_list=FLAGS.inference_list)
     hparams = ensure_compatible_hparams(hparams)
     utils.print_hparams(hparams)
-
+    vocab = open("inference_vocab.txt")
     # Inference
     trans_file = FLAGS.inference_output_file
     inference.inference(model_dir, FLAGS.inference_input_file,
-                        trans_file, hparams, num_workers, jobid)
+                        trans_file, hparams, num_workers, jobid, vocab=vocab)
 
     # Evaluation
     ref_file = FLAGS.inference_ref_file

@@ -59,7 +59,7 @@ def create_emb_for_encoder_and_decoder(share_vocab,
             raise ValueError("Share embedding but different src/tgt vocab sizes"
                              " %d vs. %d" % (src_vocab_size, tgt_vocab_size))
         utils.print_out("# Use the same source embeddings for target")
-        embedding = tf.get_variable("embedding_share", initializer=init)
+        embedding = init#tf.get_variable("embedding_share", initializer=init)
         embedding_encoder = embedding
         embedding_decoder = embedding
 

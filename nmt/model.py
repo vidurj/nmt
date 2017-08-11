@@ -168,7 +168,8 @@ class BaseModel(object):
   def init_embeddings(self, hparams, scope):
     """Init embeddings."""
     word_vectors = np.load("nmt/vectors.npy")
-    assert(len(word_vectors) == self.src_vocab_size and self.src_vocab_size == self.tgt_vocab_size)
+    print("sizes", len(word_vectors), self.src_vocab_size, self.src_vocab_size)
+    assert(len(word_vectors) == self.src_vocab_size and self.src_vocab_size == self.src_vocab_size)
     init = tf.cast(tf.constant(word_vectors), tf.float32)
     self.embedding_encoder, self.embedding_decoder = (
         model_helper.create_emb_for_encoder_and_decoder(
